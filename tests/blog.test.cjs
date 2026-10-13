@@ -150,3 +150,26 @@ test('solo shares inner voices with hand spans including the sounding bass and m
     assert.ok(Math.max(...left)<Math.min(...right));
   }
 });
+
+test('Autumn Leaves plays a full chorus with pickup, alternate ending, and four sections', () => {
+  const song=studies.find(s=>s.data.title==='Autumn Leaves');
+  const {data}=song;
+  assert.equal(data.length-song.pickupTicks,32*4*data.ticksPerQuarter);
+  assert.deepEqual(song.sections,[{label:'A1',start:0},{label:'A2',start:70},{label:'B',start:134},{label:'C',start:198}]);
+  assert.equal(song.steps.at(-1).roman,'32');
+  const events=playbackEvents(data,'implementation',0,true,'full');
+  assert.deepEqual(events.filter(n=>n.hand==='melody' && n.start<6).map(n=>n.midi),[62,64,65]);
+  assert.ok(events.some(n=>n.hand==='melody' && n.start+n.duration===data.length),'final tonic sustains through the ending');
+  assert.notDeepEqual(data.melody.filter(n=>n.start>=134).map(n=>n.midi),data.melody.filter(n=>n.start<134).map(n=>n.midi),'closing half is not a loop');
+  for(const c of data.changes.filter(c=>c.start>=6)) {
+    const attack=c.relationships[0].notes;
+    assert.equal(attack.filter(n=>n.hand!=='melody' && !n.bass).length,3);
+    assert.ok(attack.some(n=>n.bass));
+    for(const role of c.required) assert.ok(attack.some(n=>n.roles.includes(role)));
+    for(const f of c.relationships) for(const n of f.notes) {
+      assert.ok(n.note.start<=f.tick && n.note.start+n.note.duration>f.tick);
+      assert.ok(n.note.midi>=36 && n.note.midi<=84);
+      if(!n.bass && n.hand!=='melody') assert.ok(n.roles.every(r=>['3','5','7','9','b9'].includes(r)));
+    }
+  }
+});

@@ -13,6 +13,7 @@ import { chordNotation } from './chordNotation';
 const PARTS: PianoParts[] = ['melody', 'melody-root', 'full'];
 const PART_LABELS = ['Melody only', 'Melody + root', 'Melody + voicing + root'];
 export type AnimatedStudy = {
+  sections?: { label: string; start: number }[];
   data: PianoData; visualData?: PianoData; steps: {label: string; roman: string; start: number; duration: number; displayRoot: number}[];
   keyRange: readonly [number, number]; tempo: number; label: string; includeBass?: boolean; muteBass?: boolean; arrangementNote?: string;
 };
@@ -55,8 +56,9 @@ export function ProgressionDemo({ study: singleStudy, studies, embedded = false,
     return () => window.clearInterval(timer);
   }, [animate, audio, explore, data, tempo]);
   const barTicks = data.ticksPerQuarter * 4;
-  const page = form ? Math.floor(tick / (8 * barTicks)) : 0;
-  const visibleSteps = form ? steps.filter(s => s.start >= page * 8 * barTicks && s.start < (page + 1) * 8 * barTicks) : steps;
+  const sections = study?.sections ?? ['A1', 'A2', 'B', 'A3'].map((label, i) => ({ label, start: i * 8 * barTicks }));
+  const page = form ? sections.reduce((active, s, i) => s.start <= tick ? i : active, 0) : 0;
+  const visibleSteps = form ? steps.filter(s => s.label && s.start >= sections[page].start && s.start < (sections[page + 1]?.start ?? data.length)) : steps;
   return <section className={`jp-demo${showCircle ? " jp-pattern-demo" : ""}`} aria-label={title ?? (excerpt ? study.label : "Animated ii–V–I piano")}>
     {!embedded && <nav className="jp-demo-mode" aria-label="Piano view">
       {(studies ?? (study ? [study] : [])).map((s, i) => <button key={s.label} aria-pressed={i === studyIndex && !original && !explore} onClick={() => { setStudyIndex(i); setOriginal(false); setTick(0); setExplore(false); setAudio(false); }}>{s.label}</button>)}
@@ -65,8 +67,8 @@ export function ProgressionDemo({ study: singleStudy, studies, embedded = false,
       <button aria-pressed={explore === 'scales'} onClick={() => { setExplore('scales'); setAudio(false); }}>Scales</button>
     </nav>}
     {explore === 'scales' ? <ScaleExplorer /> : explore === 'chords' ? <ChordExplorer /> : <>
-      {form && <nav className="jp-form" aria-label="Song form">{['A1', 'A2', 'B', 'A3'].map((name, i) =>
-        <button key={name} aria-pressed={page === i} onClick={() => { setTick(i * 8 * barTicks); setSeek(s => s + 1); }}>{name}</button>)}</nav>}
+      {form && <nav className="jp-form" aria-label="Song form">{sections.map((section, i) =>
+        <button key={section.label} aria-pressed={page === i} onClick={() => { setTick(section.start); setSeek(s => s + 1); }}>{section.label}</button>)}</nav>}
       {showCircle && !excerpt && <ChordExplorer circleOnly progressionPath={originalSteps.map(s=>s.root)}
         value={{root: originalSteps[active].root, quality: originalSteps[active].quality, ninth:true} as ChordSelection}
         onChange={selection => {

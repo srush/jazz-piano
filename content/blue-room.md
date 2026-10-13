@@ -107,11 +107,11 @@ Of course, jazz is not a bunch of silly rules, and even its conventions changed 
 ```
 
 
-Another classic example of this is the standard _Autumn Leaves_. I was recently chatting with a friend about this song, and specifically the reverence that piano players have for Bill Evans’s version. Here's what the opening looks like in our format, followed by Bill Evans’s interpretation.
+Another classic example of this is the standard _Autumn Leaves_. I was recently chatting with a friend about this song, and specifically the reverence that piano players have for Bill Evans’s version. Here's what the full song looks like in our format, followed by Bill Evans’s interpretation.
 
 
 ```visual
-{"type":"piano","study":"Autumn Leaves","parts":"full","title":"Autumn Leaves · opening eight-bar study"}
+{"type":"piano","study":"Autumn Leaves","parts":"full","form":true,"title":"Autumn Leaves · full song"}
 ```
 
 ```visual
