@@ -1,0 +1,28 @@
+{
+  "name": "jazz-piano",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build && node scripts/build-routes.mjs",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "esbuild src/pianoModel.ts src/voiceLeadingModel.ts src/pianoAudio.ts src/chordExplorerModel.ts src/progressionModel.ts src/scaleModel.ts src/compingModel.ts src/playbackCoordinator.ts --bundle --platform=node --format=cjs --outdir=build/piano-tests --out-extension:.js=.cjs && node tests/piano.test.cjs && node tests/explorer.test.cjs && node tests/scales.test.cjs && node tests/blog.test.cjs"
+  },
+  "dependencies": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-markdown": "^10.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2",
+    "typescript": "5.8.3",
+    "vite": "6.4.4",
+    "esbuild": "0.25.12"
+  },
+  "description": "An editable jazz-piano blog with shared interactive piano and harmony visualizations.",
+  "engines": {
+    "node": ">=22"
+  }
+}

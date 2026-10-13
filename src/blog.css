@@ -1,0 +1,27 @@
+body:has(.jp-blog) { background:#fff; }
+.jp-blog { max-width:980px; padding:0 56px; }
+.jp-blog a { color:#296b5e; text-underline-offset:4px; }
+.jp-blog article { padding:48px 0 64px; }
+.jp-blog h1 { max-width:750px; margin:20px 0 56px; }
+.jp-blog h2 { margin:56px 0 24px; padding:0; border:0; font-size:32px; }
+.jp-blog h3 { font:normal 23px Georgia,serif; margin:36px 0 24px; }
+.jp-blog article > p,.jp-blog article > ul,.jp-blog article > ol { max-width:680px; font-size:16px; line-height:1.85; color:#53635b; }
+.jp-blog-visual { margin:24px 0 56px; padding:0; border:0; background:none; }
+.jp-blog .jp-demo { max-width:none; }
+.jp-blog .jp-progression { margin-bottom:24px; }
+.jp-blog .jp-chord-bar { border:0; }
+.jp-blog .jp-progression button { background:none; }
+.jp-blog .jp-progression span:empty,.jp-blog .jp-progression i { display:none; }
+.jp-blog .jp-circle button { background:#fff; }
+.jp-blog .jp-circle button[aria-pressed=true] { background:none; color:#138b80; font-weight:700; }
+.jp-blog .jp-circle svg circle { stroke:none; }
+.jp-blog .jp-quality button[aria-pressed=true] { border-color:transparent; color:#138b80; }
+.jp-form,.jp-hand-order { display:flex; flex-wrap:wrap; gap:24px; margin-bottom:24px; }
+.jp-form button,.jp-hand-order button,.jp-recording button { border:0; border-radius:0; background:none; color:#7a8580; padding:6px 0; font:inherit; font-size:12px; cursor:pointer; }
+.jp-form button[aria-pressed=true],.jp-hand-order button[aria-pressed=true] { color:#138b80; }
+.jp-blog .jp-piano-minimal .jp-play,.jp-blog .jp-piano-minimal .jp-play:hover { background:none; color:#138b80; }
+.jp-recording iframe { width:100%; aspect-ratio:16/9; border:0; display:block; margin-bottom:16px; }
+.jp-recording .jp-recording-start { display:inline-flex; align-items:center; gap:12px; font:16px/1.6 system-ui,sans-serif; background:none; padding:0; text-decoration:none; }
+.jp-recording-start span { color:#138b80; }
+.jp-blog button:focus-visible,.jp-blog input:focus-visible { outline:2px solid #138b80; outline-offset:4px; }
+@media(max-width:600px) { .jp-blog { padding:0 18px; } .jp-blog article { padding-top:24px; } .jp-blog h2 { font-size:27px; margin-top:40px; } .jp-blog-visual { margin:24px 0 40px; } }

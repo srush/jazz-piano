@@ -1,0 +1,45 @@
+.jp { --jp-ink:#263b38; --jp-muted:#68746e; --jp-line:#d9ded3; --jp-green:#315e50; color:var(--jp-ink); border:1px solid var(--jp-line); background:#fffefa; font:14px/1.6 system-ui,sans-serif; border-radius:5px; overflow:hidden; }
+.jp * { box-sizing:border-box; }
+.jp button,.jp input { font:inherit; }
+.jp button { cursor:pointer; }
+.jp button:focus-visible,.jp a:focus-visible,.jp input:focus-visible,.jp summary:focus-visible { outline:3px solid #ad7936; outline-offset:3px; }
+.jp-toolbar { display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; padding:18px 24px; border-bottom:1px solid var(--jp-line); }
+.jp-toggle { display:flex; padding:3px; background:#edf0e9; border-radius:4px; }
+.jp-toggle button { background:transparent; color:var(--jp-muted); border:0; padding:8px 12px; border-radius:3px; }
+.jp-toggle button[aria-pressed=true] { background:#fffefa; color:var(--jp-ink); box-shadow:0 1px 3px #263b3820; }
+.jp-stamp { color:var(--jp-green); font-size:11px; letter-spacing:.035em; }
+.jp-stamp::before { content:'●'; margin-right:8px; font-size:8px; }
+.jp-score { background:white; padding:20px 24px 0; overflow:auto; }
+.jp-score img { display:block; width:100%; min-width:500px; height:auto; }
+.jp-caption { padding:12px 24px 22px; background:white; color:var(--jp-muted); font-size:12px; }
+.jp-caption span { font-size:9px; font-weight:600; letter-spacing:.08em; color:var(--jp-green); margin-right:12px; }
+.jp-inspector { padding:24px; border-top:1px solid var(--jp-line); }
+.jp-inspector-title { display:flex; justify-content:space-between; gap:12px; align-items:baseline; margin-bottom:18px; }
+.jp h3 { font:normal 23px/1.2 Georgia,serif; margin:0; }
+.jp-inspector-title>span { color:var(--jp-muted); font-size:11px; }
+.jp-chords { display:flex; gap:8px; }
+.jp-chords button { border:1px solid var(--jp-line); background:transparent; color:var(--jp-ink); border-radius:3px; padding:9px 18px; text-align:left; font:22px/1.4 Georgia,serif; flex:1; }
+.jp-chords small { display:block; font:9px/1.5 system-ui,sans-serif; letter-spacing:.1em; margin-bottom:2px; }
+.jp-chords button[aria-pressed=true] { background:var(--jp-green); border-color:var(--jp-green); color:white; }
+.jp-time { display:flex; align-items:center; gap:20px; margin:20px 0; }
+.jp-time label { white-space:nowrap; font-size:12px; min-width:110px; }
+.jp-time input { flex:1; min-width:50px; accent-color:var(--jp-green); }
+.jp table { border-collapse:collapse; width:100%; font-size:12px; }
+.jp th { color:var(--jp-muted); text-align:left; font-size:10px; font-weight:500; padding:0 8px 10px; }
+.jp td { padding:10px 8px; border-top:1px solid var(--jp-line); }
+.jp-note { font:18px Georgia,serif; }
+.jp-note sub { font-size:11px; margin-left:2px; }
+.jp-muted { color:var(--jp-muted); }
+.jp-dot { display:inline-block; width:6px; height:6px; border-radius:100%; margin-right:9px; }
+.jp-melody { background:#a47131; } .jp-left { background:#315e50; } .jp-right { background:#839990; }
+.jp-required { font-size:11px; color:var(--jp-muted); margin:16px 8px 0; }
+.jp-proof { border-top:1px solid var(--jp-line); padding:18px 24px; background:#f3f5ee; }
+.jp-proof summary { cursor:pointer; font-size:12px; }
+.jp-proof summary span { float:right; font-size:10px; color:var(--jp-green); }
+.jp-proof p,.jp-proof ul { font-size:12px; color:var(--jp-muted); max-width:650px; }
+.jp-proof code { font-size:11px; overflow-wrap:anywhere; }
+.jp-downloads { display:flex; gap:20px; flex-wrap:wrap; padding:14px 24px; border-top:1px solid var(--jp-line); }
+.jp-downloads a { color:var(--jp-muted); font-size:10px; text-decoration:none; }
+.jp-downloads a:hover { text-decoration:underline; }
+.jp-sr { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+@media(max-width:600px) { .jp-toolbar,.jp-inspector,.jp-proof { padding:16px; } .jp-inspector-title>span { display:none; } .jp td,.jp th { padding:9px 4px; } .jp table { font-size:11px; } .jp-score { padding:12px 8px 0; } .jp-chords button { padding:8px 12px; } }

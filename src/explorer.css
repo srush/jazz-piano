@@ -1,0 +1,23 @@
+.jp-explorer { color:#292d2b; font:14px/1.5 system-ui,sans-serif; margin:36px auto; width:100%; max-width:820px; }
+.jp-explorer * { box-sizing:border-box; }
+.jp-explorer-controls { display:flex; justify-content:center; align-items:center; gap:44px; margin:0 auto 34px; }
+.jp-circle-wrap { width:188px; flex-shrink:0; }
+.jp-circle { position:relative; width:100%; aspect-ratio:1; touch-action:none; user-select:none; cursor:grab; }
+.jp-circle:active { cursor:grabbing; }
+.jp-circle svg { display:block; width:100%; height:100%; pointer-events:none; }
+.jp-circle button { position:absolute; transform:translate(-50%,-50%); width:32px; height:32px; border:0; border-radius:50%; background:#f6f5ef; color:#989c96; font:12px system-ui,sans-serif; cursor:grab; touch-action:none; }
+.jp-circle button:hover { color:#242a26; }
+.jp-circle button[aria-pressed=true] { color:#fff; background:#303832; }
+.jp-circle-center { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); text-align:center; border-radius:50%; width:48%; padding:12px 0; cursor:grab; }
+.jp-circle-center strong { font:400 21px/1.2 system-ui,sans-serif; letter-spacing:-.6px; }
+.jp-chord-options { display:flex; align-items:center; gap:20px; }
+.jp-quality { display:flex; gap:4px; }
+.jp-quality button,.jp-ninth-option { display:grid; place-items:center; width:40px; height:40px; border:1px solid transparent; background:transparent; color:#969c95; cursor:pointer; font:14px system-ui,sans-serif; border-radius:50%; }
+.jp-quality button[aria-pressed=true],.jp-ninth-option[aria-pressed=true] { border-color:#acb5aa; color:#303832; }
+.jp-ninth-option { font-size:16px; }
+.jp-explorer button:focus-visible,.jp-circle-center:focus-visible { outline:2px solid #737f72; outline-offset:4px; }
+main.jp-instrument-page { display:grid; place-items:center; min-height:100svh; max-width:960px; padding:36px; }
+@media(max-width:600px) { main.jp-instrument-page { padding:24px 14px; } .jp-explorer-controls { gap:22px; margin-bottom:28px; } .jp-circle-wrap { width:164px; } .jp-chord-options { flex-direction:column; gap:8px; } .jp-quality { gap:0; } .jp-quality button,.jp-ninth-option { width:34px; height:34px; font-size:16px; } }
+.jp-explorer { position:relative; }
+.jp-bass-toggle { position:absolute; right:0; bottom:5px; display:grid; place-items:center; width:38px; height:38px; padding:0; border:1px solid transparent; border-radius:50%; background:transparent; color:#9da69e; cursor:pointer; }
+.jp-bass-toggle[aria-pressed=true] { border-color:#aab7ad; color:#49665b; background:#e3e7e2; }

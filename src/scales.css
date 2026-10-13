@@ -1,0 +1,4 @@
+.jp-scale-keyboard { overflow-x:auto; max-width:820px; margin:0 auto; }
+.jp-scale-keyboard svg { display:block; width:100%; }
+.jp-scale-key { transition:fill 200ms ease; }
+@media(prefers-reduced-motion:reduce) { .jp-scale-key { transition:none; } }
