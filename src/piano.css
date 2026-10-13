@@ -6,17 +6,17 @@
 .jp-transport { display:flex; align-items:center; gap:15px; }
 .jp-transport label { font-size:10px; color:#637269; letter-spacing:.05em; }
 .jp-transport input { font:12px system-ui,sans-serif; width:55px; padding:7px 3px 7px 7px; border:1px solid #d1d9ce; border-radius:3px; color:#263b38; background:#fffefa; margin-left:5px; }
-.jp-transport .jp-play { border:0; color:white; background:#315e50; border-radius:4px; padding:10px 18px; min-width:90px; font:12px system-ui,sans-serif; cursor:pointer; }
+.jp-transport .jp-play { border:0; color:white; background:#6193c5; border-radius:4px; padding:10px 18px; min-width:90px; font:12px system-ui,sans-serif; cursor:pointer; }
 .jp-play span { font-size:10px; margin-right:6px; }
 .jp-keyboard-scroll { overflow-x:auto; padding:10px 8px 5px; background:#e7ebe2; border-radius:7px; border:1px solid #d4dbd0; }
 .jp-keyboard-scroll svg { display:block; width:100%; min-width:640px; max-height:225px; }
 .jp-piano-legend { display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:18px; font-size:10px; }
 .jp-piano-legend span { display:flex; align-items:center; gap:6px; }
 .jp-piano-legend i { width:9px; height:9px; border-radius:2px; display:inline-block; }
-.jp-piano-legend .jp-bass-swatch { background:transparent; border:1.5px dashed #315e50; }
+.jp-piano-legend .jp-bass-swatch { background:transparent; border:1.5px dashed #6193c5; }
 .jp-piano-hint { font-size:10px; margin:12px 0; color:#627367; }
 .jp-piano-now { display:flex; align-items:center; gap:10px; font-size:11px; color:#5d6c63; min-height:25px; }
-.jp-piano-status { border:1px solid #cad6c8; padding:1px 7px; border-radius:3px; font-size:9px; color:#315e50; }
+.jp-piano-status { border:1px solid #cad6c8; padding:1px 7px; border-radius:3px; font-size:9px; color:#6193c5; }
 .jp-audio-error { font-size:12px; color:#9a3838; }
 .jp-piano button:focus-visible,.jp-piano input:focus-visible,.jp-keyboard-scroll:focus-visible { outline:3px solid #ad7936; outline-offset:3px; }
 @media(max-width:600px) { .jp-piano { padding:16px; } .jp-piano-heading { gap:14px; } .jp-piano h3 { font-size:22px; } .jp-piano-legend { column-gap:14px; } }

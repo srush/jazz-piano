@@ -21,3 +21,9 @@ main.jp-instrument-page { display:grid; place-items:center; min-height:100svh; m
 .jp-explorer { position:relative; }
 .jp-bass-toggle { position:absolute; right:0; bottom:5px; display:grid; place-items:center; width:38px; height:38px; padding:0; border:1px solid transparent; border-radius:50%; background:transparent; color:#9da69e; cursor:pointer; }
 .jp-bass-toggle[aria-pressed=true] { border-color:#aab7ad; color:#49665b; background:#e3e7e2; }
+
+.jp-voicing-knob { display:flex; flex-direction:column; align-items:center; gap:6px; color:#737d88; font-size:12px; }
+.jp-voicing-knob button { width:48px; height:48px; padding:0; background:none; border:0; cursor:pointer; }
+.jp-voicing-knob svg { width:100%; height:100%; }
+.jp-explorer:has(.jp-voicing-knob) .jp-chord-options { flex-direction:column; gap:18px; }
+.jp-explorer .jp-bass-toggle { bottom:-28px; }

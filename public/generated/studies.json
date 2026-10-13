@@ -14997,11 +14997,11 @@
               "letter": "F",
               "accidental": 0
             },
-            "quality": "major-sixth",
+            "quality": "major-seventh",
             "bass": null,
             "required": [
               "3",
-              "6"
+              "7"
             ],
             "keyboardTones": [
               {
@@ -19815,11 +19815,11 @@
               "letter": "F",
               "accidental": 0
             },
-            "quality": "major-sixth",
+            "quality": "major-seventh",
             "bass": null,
             "required": [
               "3",
-              "6"
+              "7"
             ],
             "keyboardTones": [
               {
@@ -21380,7 +21380,7 @@
       },
       "steps": [
         {
-          "label": "F6",
+          "label": "Fmaj7",
           "roman": "1",
           "start": 0,
           "duration": 4,
@@ -21464,7 +21464,7 @@
           "displayRoot": 55
         },
         {
-          "label": "F6",
+          "label": "Fmaj7",
           "roman": "7",
           "start": 48,
           "duration": 4,

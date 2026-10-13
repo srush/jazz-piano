@@ -34,7 +34,7 @@ export function fifthsIndex(x: number, y: number): number {
 /** Interactive study data, not a Lean certificate. Spelling follows degree
  * letters, including E# in F# major and Cb in Ab minor. No MIDI respelling table.
  */
-export function buildChord(selection: ChordSelection): PianoData {
+export function buildChord(selection: ChordSelection, voicing: 1 | 2 = 1): PianoData {
   const root = FIFTHS.find(r => r.name === selection.root);
   const quality = QUALITIES.find(q => q.value === selection.quality);
   if (!root || !quality) throw new RangeError('Unsupported chord root or quality');
@@ -63,7 +63,7 @@ export function buildChord(selection: ChordSelection): PianoData {
   const third = note(voicingRoot + quality.third, tones[0]);
   const rightTones = tones.slice(1).filter(t => selection.ninth || t.degree !== 9);
   // Third, fifth, seventh, ninth form one compact ascending stack.
-  const right = rightTones.map(t => note(voicingRoot + t.semitones, t));
+  const right = rightTones.map(t => note(voicingRoot + t.semitones - (voicing === 2 && (t.degree === 7 || t.degree === 9) ? 12 : 0), t));
   const relationships: Relationship[] = [
     { hand: 'left', note: bass, roles: ['1'], bass: true },
     { hand: 'left', note: third, roles: [tones[0].label], bass: false },
@@ -79,4 +79,38 @@ export function buildChord(selection: ChordSelection): PianoData {
       relationships: Array.from({ length: 8 }, (_, tick) => ({ tick, notes: relationships })),
     }],
   };
+}
+
+/** Root, third, fifth, seventh and a ninth above the octave. */
+export function buildScaleChord(root: RootName): PianoData {
+  const data = buildChord({ root, quality: 'major', ninth: true });
+  const pc = FIFTHS.find(r => r.name === root)!.pc;
+  const tonic = 60 + pc - (60 + pc + 14 > 84 ? 12 : 0);
+  const relationships = data.changes[0].relationships[0].notes.map(r => {
+    const midi = r.bass ? 36 + pc : tonic + ((r.note.midi - tonic) % 12 + 12) % 12 + (r.roles.includes('9') ? 12 : 0);
+    return { ...r, note: { ...r.note, midi, octave: r.note.octave + (midi - r.note.midi) / 12 } };
+  });
+  return { ...data, left: relationships.filter(r => r.hand === 'left').map(r => r.note),
+    right: relationships.filter(r => r.hand === 'right').map(r => r.note),
+    changes: [{ ...data.changes[0], relationships: Array.from({length: data.length}, (_, tick) => ({tick, notes: relationships})) }] };
+}
+
+/** Two-hand voicings, ordered low to high within each hand. */
+export function buildHandVoicing(selection: ChordSelection, type: 1 | 2): PianoData {
+  const data = buildChord(selection);
+  const pc = FIFTHS.find(r=>r.name===selection.root)!.pc;
+  const base = 48 + pc - (pc > 5 ? 12 : 0);
+  const third = QUALITIES.find(q=>q.value===selection.quality)!.third;
+  const seventh = QUALITIES.find(q=>q.value===selection.quality)!.seventh;
+  const order = type === 1 ? [3,7,9,5] : [7,3,5,9];
+  const offsets = type === 1 ? [third,seventh,14,19] : [seventh,third+12,19,26];
+  const original = data.changes[0].relationships[0].notes;
+  const voices = order.map((degree,i)=> {
+    const source = original.find(r=>!r.bass && Number(r.roles[0].replace('b',''))===degree)!;
+    const midi = base+offsets[i];
+    return {...source, hand:(i<2?'left':'right') as 'left'|'right', note:{...source.note,midi,octave:source.note.octave+(midi-source.note.midi)/12}};
+  });
+  const bass = original.find(r=>r.bass)!;
+  return {...data,left:[bass.note,...voices.slice(0,2).map(r=>r.note)],right:voices.slice(2).map(r=>r.note),
+    changes:[{...data.changes[0],relationships:Array.from({length:data.length},(_,tick)=>({tick,notes:[bass,...voices]}))}]};
 }

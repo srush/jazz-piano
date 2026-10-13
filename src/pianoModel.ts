@@ -17,7 +17,7 @@ export const ROLE_NAMES: Record<KeyColor, string> = {
   third: '3rd', fifth: '5th', seventh: '7th', ninth: '9th', melody: 'Other melody', other: 'Other tone',
 };
 const family = (degree: number): KeyColor | undefined =>
-  ({ 3: 'third', 5: 'fifth', 7: 'seventh', 9: 'ninth' } as const)[degree as 3 | 5 | 7 | 9];
+  ({ 3: 'third', 5: 'fifth', 6: 'seventh', 7: 'seventh', 9: 'ninth', 11: 'ninth', 13: 'ninth' } as const)[degree as 3 | 5 | 6 | 7 | 9 | 11 | 13];
 
 export const noteName = (n: Relationship['note']) => n.spelling.letter +
   (n.spelling.accidental > 0 ? '♯'.repeat(n.spelling.accidental) : '♭'.repeat(-n.spelling.accidental)) + n.octave;
@@ -31,7 +31,9 @@ export const atTick = (change: Change, tick: number) =>
 export function keyRole(change: Change, midi: number, played?: Relationship) {
   const tone = change.keyboardTones.find(t => t.pitchClass === midi % 12 &&
     (!played || t.letter === played.note.spelling.letter));
-  return { color: tone ? family(tone.degree) : undefined, label: tone?.label };
+  // A sixth replaces the seventh only on a sixth chord; otherwise it is color (13).
+  const colorSixth = tone?.degree === 6 && !['major-sixth', 'minor-sixth'].includes(change.quality);
+  return { color: tone ? family(colorSixth ? 13 : tone.degree) : undefined, label: colorSixth ? '13' : tone?.label };
 }
 
 export function referenceName(change: Change, midi: number) {
@@ -48,12 +50,13 @@ export type PlaybackEvent = { midi: number; start: number; duration: number; han
 /** Clip a seek into held notes; never retrigger them at each visual tick/chord.
  * Silence only LH bass intervals, including a note that becomes bass mid-hold.
  */
-export function playbackEvents(data: PianoData, mode: ViewMode, fromTick: number, includeBass = false, parts?: PianoParts): PlaybackEvent[] {
+export function playbackEvents(data: PianoData, mode: ViewMode, fromTick: number, includeBass = false, parts?: PianoParts, muteBass = false): PlaybackEvent[] {
   const result: PlaybackEvent[] = [];
   let live = new Map<string, PlaybackEvent>();
   for (let tick = fromTick; tick < data.length; tick++) {
     const next = new Map<string, PlaybackEvent>();
     for (const r of atTick(currentChange(data, tick), tick)) {
+      if (muteBass && r.bass) continue;
       if (parts ? !includesPart(r, parts) : ((!includeBass && isMutedBass(r)) || (mode === 'head' && r.hand !== 'melody'))) continue;
       const id = `${r.hand}:${r.note.midi}:${r.note.start}:${r.note.duration}`;
       let event = live.get(id);

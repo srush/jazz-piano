@@ -182,3 +182,15 @@ test('part selection filters audio and highlighted relationships identically', (
     assert.ok(seek.every(e=>e.start>=9));
   }
 });
+
+test('tenor melody and piano can use the same pitch with separate samples', async () => {
+  const originalFetch=global.fetch;
+  const urls=[];
+  try {
+    global.fetch=async url=>{urls.push(url);return {ok:true,arrayBuffer:async()=>new ArrayBuffer(1)};};
+    const samples=await loadPiano({decodeAudioData:async()=>({})},[{midi:60,hand:'melody'},{midi:60,hand:'right'}],'tenor-sax');
+    assert.ok(samples.has(-48)); assert.ok(samples.has(60));
+    assert.notEqual(samples.get(-48),samples.get(60));
+    assert.ok(urls.includes('/audio/tenor-sax/48.mp3'));
+  } finally {global.fetch=originalFetch;}
+});

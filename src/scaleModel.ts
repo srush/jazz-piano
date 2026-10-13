@@ -1,6 +1,7 @@
+import { PIANO_PALETTE } from './palette';
 import { FIFTHS, type RootName } from './chordExplorerModel';
 
-export const SCALE_COLORS = { root: '#aeb8b5', dark: '#138b80', light: '#70d4bc', pale: '#d4eee1' };
+export const SCALE_COLORS = { ...PIANO_PALETTE, pale: '#fff' };
 export function majorScale(rootName: RootName) {
   const root = FIFTHS.find(r => r.name === rootName);
   if (!root) throw new RangeError('Unsupported scale root');

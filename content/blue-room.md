@@ -1,169 +1,119 @@
 <!-- Edit this file to write the post. Replace the suggestion bullets with your own writing.
 Visual blocks are live components: move them anywhere in the Markdown.
-Piano parts: melody, melody-root, full. Comping has its own hand-split controls.
+Piano parts: melody, melody-root, full. Comping includes an optional tenor sax melody.
 The short Blue Room examples use the opening eight bars; the solo example uses all 32 bars.
 -->
 
 # How to Play Jazz Piano
 
-I have been spending some of my free time these days learning 
-jazz piano. It's a great hobby in that it is infinitely hard,
-but pays off in small step wins. While I personally like listening to later eras, as a student 
-I find the 1930s-style songs to be the most rewards to play 
-at my current ability.  What is neat about these songs is that they have simple melodies,
-but on the piano you get a chance to hear and experiment 
-with harmonies. 
 
-In this blog, we walkthrough the exercise of basic harmonization of a Jazz standard. 
-For some reason this is a topic that I found a bit challenging to learn online, so 
-I thought I would make an attempt. Writing is human, visuals are generated with AI assistance.
-Based on content from: 
-
-* Jazz Piano Theory Book
-* Suskind
-* Century of Jazz 
-
-
-<!-- Writing notes
-- [Opening suggestion: what you want the reader to hear differently by the end.]
--->
-
-## Our Muse
-
-For motivation, let's first listen to Ella Fitzgerald singing a Rodger & Hart standard, The Blue Room. 
+In 1926, Rodgers and Hart premiered a musical called _The Girl Friend_, which is now mostly forgotten. A [reviewer of the show](https://victoriancollections.net.au/items/5e0c3b1121ea670e7425adbe) noted, "There was a ditty called _The Blue Room_ which should be sung to exhaustion." The piece stuck around as part of the jazz canon, with a recording by Miles Davis in 1951.
+Ella Fitzgerald recorded her version of it in 1956.
 
 <!-- Writing notes
 - [Introduce this recording and what draws you to it.]
 - [Suggest a phrase or timestamp to listen for: melody, phrasing, or accompaniment.]
-- [Optional: choose an embeddable recording; the current reference opens on YouTube.]
-- [Recording reference: Ella Fitzgerald — The Blue Room](https://www.youtube.com/watch?v=okVcVIrPsGk)
+- [Recording reference: Ella Fitzgerald — The Blue Room](https://www.youtube.com/watch?v=kMYqLffrKm0)
 -->
 
 ```visual
-{"type":"recording","video":"okVcVIrPsGk","embed":false,"title":"Ella Fitzgerald · The Blue Room"}
+{"type":"recording","video":"kMYqLffrKm0","embed":true,"title":"Ella Fitzgerald · The Blue Room"}
 ```
 
-## The Melody
+A hundred years later, one way the song lives on is as a jazz standard in common fake books.
+You get a scribbled schematic version of the song.
 
-Imagine now that we are at a gig accompanying Ella. We would have sheet music that 
-just tells us the melody of the song. As mentioned before, these songs are quite simple, so we can just tap out the song one note at a time. 
+![The Blue Room lead sheet](/image.png)
+
+
+Sitting down now at the piano, we can work our way through the melody of the
+song, tapping it out one note at a time.
 
 ```visual
 {"type":"piano","study":"Blue Room","parts":"melody","title":"Blue Room · melody only"}
 ```
 
-## The Bass Line
-
-Now lets invite a friend over who play bass. They will cover the root of the chord for the 
-song. In this case, the chord changes every two beats, and we'll have them play without 
-any rhythm. 
-
-<!-- Writing notes
-- [Describe what changes when the chord roots appear under the same melody.]
-- [Follow the root movement through the phrase; distinguish the root from a slash bass.]
--->
+If we have a friend who plays bass, they can help us out as well.
+The chords change every two beats, so they can add the root for us.
+We have a nice little interplay.
 
 ```visual
 {"type":"piano","study":"Blue Room","parts":"melody-root","title":"Blue Room · melody + chord roots"}
 ```
 
-## Quick Review: Scales and Intervals
-
-Each one of these notes in the bass line will the root of a chord. 
-To define chord notation, first consider the major scale for each 
-of possible note. We start with a grey root note. I am also highlighting
-the 3rd and 7th note, which play a critical role, and the 5th and 9th 
-for each key. We order by the circle of fifths which connects related 
-keys. 
-
+One thing you will notice about the chord roots is that they all linger
+near each other on the circle of fifths. Let's remind ourselves what our
+major chords look like. I will use **dark blue** for the 3rd / 7th of a chord, and
+**light blue** for the 5th / 9th.
 
 ```visual
 {"type":"scales","title":"Major scales · circle of fifths"}
 ```
 
-## Jazz Chords
-
-From these we can construct our set of Jazz chords. We will consider
+Jazz chords tend to be played with at least four notes and often include more.
+The key variants of the chord are major seventh (△7), minor seventh (−7, with ♭3/♭7), and dominant seventh (7, with ♭7).
+They differ in the third and seventh.
 
 
 ```visual
 {"type":"chords","title":"Chord qualities · circle of fifths"}
 ```
 
-## How jazz patterns work
+The chord we are playing is determined primarily by the 3rd and the 7th, which means
+the order of the notes is not critical. This gives us freedom to move them around and
+split them between the left and right hands on the piano.
 
-<!-- Writing notes
-- [Introduce ii–V–I as a sequence of functions in a key.]
-- [Trace Dm7 → G7 → Cmaj7 and listen for tension and resolution.]
-- [Follow common tones and the small movements of the third and seventh.]
--->
 
 ```visual
-{"type":"progression","title":"ii–V–I · Dm7 → G7 → Cmaj7"}
+{"type":"voicings","title":"Type A and Type B voicings"}
 ```
 
-## Comping
+Voicings allow us to think beyond playing an individual chord
+in order to consider the best way to chain them together. The canonical
+version of this is the ii–V–I pattern, which appears throughout jazz standards.
+In this three-chord pattern, some notes stay in place while the others move by a step.
 
-<!-- Writing notes
-- [Describe accompanying another musician while leaving space for their melody.]
-- [Compare the two left-hand orders: third–seventh and seventh–third.]
-- [Follow the fifth and ninth in the right hand; explain why the root can be omitted.]
-- [Arrangement choice: this demonstration extends Blue Room’s major triads and sixth chords to major-seventh/ninth voicings.]
--->
 
 ```visual
-{"type":"comping","study":"Blue Room","title":"Blue Room · rootless comping"}
+{"type":"progression","title":"ii–V–I · D−7 → G7 → C△7"}
 ```
 
-## Rules for solo piano
+Once we have the chords under our fingers, we can accompany our friends.
+In addition to the bass playing the root, let's bring in a saxophone to play the melody.
+Here we are using the chords from the sheet music above and picking voicings that minimize movement, noting the G–C–F pattern. For these demos, we use major sevenths in place of the sixth chords on the lead sheet.
 
-<!-- Writing notes
-- Preserve the melody’s pitches, rhythm, rests, and ties.
-- Keep the melody above the accompaniment.
-- Place the bass plus a third or seventh in the left hand; share the remaining chord tones between hands.
-- Retain the third and seventh in the complete harmony; use the sixth for sixth chords and retain required altered tones.
-- Use half-note or whole-note left-hand holds; do not add chord attacks just because the melody moves or leaps.
-- Keep hand spans comfortable; use pedal and repositioning for larger melody leaps.
-- Prefer common tones and small movements between voicings.
-- Avoid muddy low-register seconds and unintended minor-ninth clashes, including against later melody notes.
-- Preserve functional note spelling and review any bass changes in fast turnarounds.
-- Treat these as this arrangement’s working rules, rather than universal rules of jazz.
-- [Discuss the contrast with comping: the pianist now supplies melody, bass, and harmony.]
--->
+```visual
+{"type":"comping","study":"Blue Room","title":"Blue Room · comping, bass and tenor sax"}
+```
 
-## Blue Room, played solo
+Yet, often we may not have a band to accompany us. One of the fun parts of jazz
+piano is balancing harmony and melody in one piece.
+Jeremy Siskind's lovely [Playing Solo Jazz Piano](https://jeremysiskind.com/product/playing-solo-jazz-piano/) provides a set of rules for creating basic solo arrangements.
 
-<!-- Writing notes
-- [Walk through the complete 32-bar A1–A2–B–A3 form.]
-- [Compare the complete texture with the melody-only, root, and comping examples above.]
-- [Review the pedal-assisted melody leaps in bars 5, 13, and 29.]
-- [Discuss bar 17: the melody supplies C7’s third initially; it then leaves that third implied during the held accompaniment.]
--->
+- Bass at the bottom on the left. Melody at the top on the right.
+- Three inner tones shared between the hands.
+- Prioritize the 3rd and 7th, omitting duplicate inner tones when the melody already supplies them.
+- Prefer even spacing and small voice movements.
 
 ```visual
 {"type":"piano","study":"blue-room-full","parts":"full","title":"Blue Room · complete 32-bar solo arrangement","form":true}
 ```
 
-## A couple of other examples
+Of course, jazz is not a bunch of silly rules, and even its conventions changed drastically between 1926 and the 1950s. I'm blogging right now from Cooper Square, where the [Five Spot Café](https://en.wikipedia.org/wiki/Five_Spot_Caf%C3%A9) once stood. In [1957, the year after Ella recorded her version](https://theloniousmonk.estate/blogs/news/the-making-of-misterioso), Thelonious Monk began a residency there that rewrote a lot of jazz piano ideas. Here is a version of this standard from Hank Jones that plays with the melody, rhythm, and harmony of the original song.
 
-### All of Me
-
-<!-- Writing notes
-- [Compare the phrase shape and triplet rhythm with Blue Room.]
-- [Point out an example of a chord tone or color tone in the melody.]
--->
 
 ```visual
-{"type":"piano","study":"All Of Me","parts":"full","title":"All of Me · opening eight-bar study"}
+{"type":"recording","video":"rfDcYWechcE","embed":true,"title":"Blue Room · video performance"}
 ```
 
-### Satin Doll
 
-<!-- Writing notes
-- [Identify the ii–V patterns and compare how the voices move.]
-- [Suggest what the reader could try next at the piano.]
--->
+Another classic example of this is the standard _Autumn Leaves_. I was recently chatting with a friend about this song, and specifically the reverence that piano players have for Bill Evans’s version. Here's what the opening looks like in our format, followed by Bill Evans’s interpretation.
+
 
 ```visual
-{"type":"piano","study":"Satin Doll","parts":"full","title":"Satin Doll · opening eight-bar study"}
+{"type":"piano","study":"Autumn Leaves","parts":"full","title":"Autumn Leaves · opening eight-bar study"}
+```
+
+```visual
+{"type":"recording","video":"by4Cr3kPNPg","embed":true,"title":"Bill Evans Trio · Autumn Leaves"}
 ```
