@@ -31,7 +31,7 @@ body:has(.jp-blog) { background:#fff; }
 .jp-blog button:focus-visible,.jp-blog input:focus-visible { outline:2px solid #6193c5; outline-offset:4px; }
 @media(max-width:600px) { .jp-blog { padding:0 18px; } .jp-blog article { padding-top:24px; } .jp-blog h2 { font-size:27px; margin-top:32px; } .jp-blog-visual { margin:20px 0 28px; } }
 
-.jp-blog article img { display:block; max-width:100%; height:auto; }
+.jp-blog article img { display:block; max-width:100%; height:auto; margin:40px auto; }
 
 .jp-blog .jp-pattern-demo > .jp-progression span { font-size:17px; font-weight:500; line-height:1.1; margin-bottom:8px; }
 .jp-blog .jp-pattern-demo > .jp-progression strong { font-size:17px; font-weight:400; letter-spacing:0; }
