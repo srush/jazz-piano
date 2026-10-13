@@ -30,7 +30,7 @@ export function ProgressionDemo({ study: singleStudy, studies, embedded = false,
   const excerpt = !!study && !original;
   const data = excerpt ? study.data : originalData;
   const steps = excerpt ? study.steps : originalSteps;
-  const tempo = excerpt ? study.tempo : showCircle ? 200 : 100;
+  const tempo = Math.round((excerpt ? study.tempo : showCircle ? 200 : 100) * 1.2);
   const [explore, setExplore] = useState<false | 'chords' | 'scales'>(false);
   const [tick, setTick] = useState(0);
   const [animate, setAnimate] = useState(() => !embedded && !window.matchMedia('(prefers-reduced-motion: reduce)').matches);

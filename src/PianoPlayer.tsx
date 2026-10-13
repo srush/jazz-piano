@@ -38,7 +38,7 @@ export function PianoPlayer({ data, visualData, mode, tick, onTickChange, seekVe
   const includeBass = !muteBass && (parts ? parts === 'full' || parts === 'melody-root' : bassOption);
   const [playing, setPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [tempo, setTempo] = useState(Math.max(40, Math.min(200, initialTempo)));
+  const [tempo, setTempo] = useState(Math.max(40, Math.min(240, initialTempo)));
   const colors = { ...COLORS, third: PIANO_PALETTE.dark, seventh: PIANO_PALETTE.dark,
     fifth: PIANO_PALETTE.light, ninth: PIANO_PALETTE.light, other: PIANO_PALETTE.light, melody: PIANO_PALETTE.melody, ...palette };
   const [error, setError] = useState('');
@@ -197,8 +197,8 @@ export function PianoPlayer({ data, visualData, mode, tick, onTickChange, seekVe
   return <section className={`jp-piano${minimal ? ' jp-piano-minimal' : ''}`} aria-label={minimal ? title : undefined} aria-labelledby={minimal ? undefined : titleId}>
     {!hideTransport && <div className="jp-piano-heading">{!minimal && <div><span className="jp-piano-eyebrow">HEAR THE HARMONY</span>
       <h3 id={titleId}>{title}</h3></div>}
-      <div className="jp-transport">{!minimal && <label htmlFor={tempoId}>BPM <input id={tempoId} type="number" min="40" max="200" step="5"
-        value={tempo} onChange={e => { stop(); setTempo(Math.max(40, Math.min(200, Number(e.target.value) || 40))); }} /></label>}
+      <div className="jp-transport">{!minimal && <label htmlFor={tempoId}>BPM <input id={tempoId} type="number" min="40" max="240" step="5"
+        value={tempo} onChange={e => { stop(); setTempo(Math.max(40, Math.min(240, Number(e.target.value) || 40))); }} /></label>}
         <button className="jp-play" onClick={playing || loading ? stop : () => void play()} aria-busy={loading} aria-label={loading ? 'Cancel loading piano' : playing ? 'Stop piano playback' : 'Play piano from selected position'}>
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">{loading ? <circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="30 14"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite" /></circle> : playing
             ? <rect x="7" y="7" width="10" height="10" rx="1" fill="currentColor" />
